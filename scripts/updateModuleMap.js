@@ -1,6 +1,4 @@
-// eslint-disable-next-line import/no-extraneous-dependencies -- desc
 const fs = require('fs-extra');
-// eslint-disable-next-line import/no-extraneous-dependencies -- desc
 const fetch = require('node-fetch');
 const { name, version } = require('../package.json');
 

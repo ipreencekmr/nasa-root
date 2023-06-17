@@ -20,7 +20,6 @@
       "compatibility": "^5.0.0"
     },
     "runner": {
-      "outputFile": "./one-app.log",
       "dockerImage": "oneamex/one-app-dev:5.0.0",
       "modules": [
         ".",
