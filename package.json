@@ -5,6 +5,7 @@
   "contributors": [],
   "scripts": {
     "start": "one-app-runner",
+    "start:test": "one-app-runner-test",
     "prebuild": "npm run clean",
     "build": "bundle-module",
     "watch:build": "npm run build -- --watch",
@@ -19,9 +20,11 @@
       "compatibility": "^5.0.0"
     },
     "runner": {
-      "dockerImage": "oneamex/one-app-dev:latest",
+      "outputFile": "./one-app.log",
+      "dockerImage": "oneamex/one-app-dev:5.0.0",
       "modules": [
-        "."
+        ".",
+        "../nasa-root"
       ],
       "rootModuleName": "nasa-root",
       "parrotMiddleware": "./dev.middleware.js"
@@ -36,8 +39,10 @@
     "@americanexpress/one-app-ducks": "^4.3.1",
     "@americanexpress/one-app-router": "^1.1.0",
     "content-security-policy-builder": "^2.1.0",
+    "fs-extra": "^11.1.1",
     "holocron": "^1.1.2",
     "immutable": "^4.0.0-rc.12",
+    "node-fetch": "^3.3.1",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-intl": "^5.10.6",
