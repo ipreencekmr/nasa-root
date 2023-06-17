@@ -35,6 +35,7 @@ jobs:
       run: vercel build --prod --confirm -t $VERCEL_TOKEN --name nasa-root
       env:
         VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        NODE_ENV: production
     - name: 'Update Module Map'
       run: |
         node ./scripts/updateModuleMap.js
