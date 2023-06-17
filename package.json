@@ -35,6 +35,7 @@
       "parrotMiddleware": "./dev.middleware.js"
     },
     "bundler": {
+      "webpackConfigPath": "webpack.config.js",
       "providedExternals": [
         "react-intl"
       ]
