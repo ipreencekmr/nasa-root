@@ -19,23 +19,23 @@ npm run start
 
 ## Available Scripts
 
-** `npm run test:lint` **
+`npm run test:lint`
 
-** `npm run test:unit` **
+`npm run test:unit`
 
-** `npm run test` **
+`npm run test`
 
-** `npm run clean` **
+`npm run clean`
 
-** `npm run build` **
+`npm run build`
 
-** `npm run build:watch` **
+`npm run build:watch`
 
-** `npm run start` **
+`npm run start`
 
-** `npm run start:test` **
+`npm run start:test`
 
-** `npm run generate:map` **
+`npm run generate:map`
 
 ## Valuabel Documentations
 
