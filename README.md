@@ -1,6 +1,6 @@
 ## nasa-root
 
-> [One App](https://github.com/americanexpress/one-app#--) `holocron` module.
+A Demo application build on top of One App framework provided by american express. It is using open source api from [NASA](https://api.nasa.gov/)
 
 ## Prerequisite
 
@@ -39,7 +39,25 @@ npm run start
 
 ## Valuabel Documentations
 
-Husky[https://typicode.github.io/husky/getting-started.html]
+- [One App](https://github.com/americanexpress/one-app#--) 
+
+- [Husky](https://typicode.github.io/husky/getting-started.html)
+
+- [Docker](https://www.docker.com/get-started/)
+
+- [Commitlint](https://commitlint.js.org/#/)
+
+- [ESLint](https://eslint.org/docs/latest/use/getting-started)
+
+- [RTL](https://testing-library.com/docs/)
+
+- [Jest](https://jestjs.io/docs/getting-started)
+
+- [Node](https://nodejs.org/en/docs)
+
+- [React](https://react.dev/learn)
+
+
 
 
 
