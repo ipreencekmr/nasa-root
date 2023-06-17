@@ -6,6 +6,9 @@ node_modules
 module_map
 *.log
 
+# github
+.github
+
 # build
 build
 .build-cache
