@@ -1,0 +1,43 @@
+name: Deploy
+
+on:
+  release:
+    types: [created]
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 16.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '16.x'
+    - name: Cache NPM Dependencies
+      uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - name: Install Dependencies
+      run: npm install
+      env:
+        NODE_ENV: development
+    - name: Build Module
+      run: npm run build
+      env:
+        NODE_ENV: production
+    - name: 'Deploy'
+      run: vercel build --prod --confirm -t $VERCEL_TOKEN --name nasa-root
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+    - name: 'Update Module Map'
+      run: |
+        node ./scripts/updateModuleMap.js
+        vercel module_map --prod --confirm -t $VERCEL_TOKEN --name module-map
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
