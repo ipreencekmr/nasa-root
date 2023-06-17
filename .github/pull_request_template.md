@@ -12,6 +12,6 @@
 ## Type of Change
 <!-- Put an x inside square brackets in option that applies -->
 
-- [] Bug Fix
-- [] Feature Introduced
-- [] Documentation
+- [ ] Bug Fix
+- [ ] Feature Introduced
+- [ ] Documentation
