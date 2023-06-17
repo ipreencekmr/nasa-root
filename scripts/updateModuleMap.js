@@ -5,9 +5,9 @@ const { name, version } = require('../package.json');
 // This is created during the build process within the deploy action
 const bundleIntegrity = require('../bundle.integrity.manifest.json');
 
-const moduleMapUrl = 'https://module-map.vercel.app'; // This is the module map URL you got in the previous step i.e. https://example-module-map.vercel.app
+const moduleMapUrl = 'https://module-map.vercel.app/module-map.json'; // This is the module map URL you got in the previous step i.e. https://example-module-map.vercel.app
 
-const STATIC_ASSETS_URL = 'nasa-root-kztx7ts3g-ipreencekmr.vercel.app'; // example 'https://my-module.vercel.app'
+const STATIC_ASSETS_URL = 'nasa-root-9umo813po-ipreencekmr.vercel.app'; // example 'https://my-module.vercel.app'
 
 const updateModuleMap = async () => {
   try {
