@@ -1,5 +1,5 @@
 // Read the following to find out more:
-// Configuring scenarios: https://github.com/americanexpress/parrot/blob/master/SCENARIOS.md
+// Configuring scenarios: https://github.com/americanexpress/parrot/blob/main/SCENARIOS.md
 
 module.exports = {
   'hello world': [

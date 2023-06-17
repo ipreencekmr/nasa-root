@@ -40,7 +40,7 @@ NasaRoot.childRoutes = childRoutes;
 // https://github.com/americanexpress/one-app/blob/main/docs/api/modules/App-Configuration.md
 /* istanbul ignore next */
 if (!global.BROWSER) {
-  // eslint-disable-next-line global-require
+  // eslint-disable-next-line global-require -- desc
   NasaRoot.appConfig = require('../appConfig').default;
 }
 

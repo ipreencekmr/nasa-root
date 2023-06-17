@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from '@americanexpress/one-app-router';
 
 const childRoutes = () => [
-  <Route path="/" />,
+  <Route key={0} path="/" />,
 ];
 
 export default childRoutes;

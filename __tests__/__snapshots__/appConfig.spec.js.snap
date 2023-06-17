@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`appConfig csp should be a valid csp string 1`] = `"report-uri; default-src 'self'; script-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self'"`;

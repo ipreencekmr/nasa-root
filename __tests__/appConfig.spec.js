@@ -13,7 +13,7 @@ describe('appConfig', () => {
     });
 
     it('should be a valid csp string', () => {
-      // eslint-disable-next-line global-require
+      // eslint-disable-next-line global-require -- desc
       const cspString = require('../src/csp').default;
       expect(cspString).toMatchSnapshot();
     });
