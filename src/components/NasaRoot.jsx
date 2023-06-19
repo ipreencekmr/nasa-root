@@ -1,31 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { loadLanguagePack, updateLocale } from '@americanexpress/one-app-ducks';
-import { FormattedMessage, IntlProvider } from 'react-intl';
+import { IntlProvider } from 'react-intl';
 import { connect } from 'react-redux';
 import { fromJS } from 'immutable';
 import childRoutes from '../childRoutes';
 
-export const NasaRoot = ({ switchLanguage, languageData, localeName }) => {
-  const locales = ['en-US', 'en-CA', 'es-MX'];
+export const NasaRoot = ({ languageData, localeName, children }) => {
   // naive solution - up to user on how to load in data
-  if (languageData.greeting) {
+  if (languageData) {
     return (
       <IntlProvider locale={localeName} messages={languageData}>
-        <div>
-          <span id="greeting-message">
-            <h1><FormattedMessage id="greeting" /></h1>
-          </span>
-          <div id="locale">
-            <label htmlFor="locale-selector">
-              <p>Choose a locale:</p>
-              <select name="locale" id="locale-selector" onChange={switchLanguage}>
-                {locales.map((locale) => <option key={locale} value={locale}>{locale}</option>
-                )}
-              </select>
-            </label>
-          </div>
-        </div>
+        {children}
       </IntlProvider>
     );
   }
@@ -45,7 +31,7 @@ if (!global.BROWSER) {
 }
 
 NasaRoot.propTypes = {
-  switchLanguage: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
   languageData: PropTypes.shape({
     greeting: PropTypes.string.isRequired,
   }).isRequired,
@@ -72,7 +58,9 @@ export const mapStateToProps = (state) => {
   };
 };
 
-export const loadModuleData = ({ store: { dispatch } }) => dispatch(loadLanguagePack('nasa-root', { fallbackLocale: 'en-US' }));
+export const loadModuleData = async ({ store: { dispatch } }) => {
+  await dispatch(loadLanguagePack('nasa-root', { fallbackLocale: 'en-US' }));
+};
 
 NasaRoot.holocron = {
   name: 'nasa-root',

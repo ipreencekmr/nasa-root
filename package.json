@@ -28,7 +28,11 @@
       "dockerImage": "oneamex/one-app-dev:latest",
       "moduleMapUrl": "https://module-map.vercel.app/module-map.json",
       "modules": [
-        "."
+        ".",
+        "../nasa-container",
+        "../nasa-header",
+        "../nasa-footer",
+        "../nasa-home"
       ],
       "rootModuleName": "nasa-root",
       "parrotMiddleware": "./dev.middleware.js"
@@ -46,6 +50,7 @@
     "content-security-policy-builder": "^2.1.0",
     "fs-extra": "^11.1.1",
     "holocron": "^1.1.2",
+    "holocron-module-route": "^1.7.0",
     "immutable": "^4.0.0-rc.12",
     "node-fetch": "^2.6.11",
     "prop-types": "^15.7.2",
@@ -57,6 +62,7 @@
   "devDependencies": {
     "@americanexpress/one-app-bundler": "^6.10.0",
     "@americanexpress/one-app-runner": "^6.10.0",
+    "@babel/eslint-parser": "^7.22.5",
     "@babel/polyfill": "^7.12.1",
     "@commitlint/cli": "^17.6.5",
     "@commitlint/config-conventional": "^17.6.5",

@@ -1,8 +1,13 @@
 import React from 'react';
-import { Route } from '@americanexpress/one-app-router';
+import ModuleRoute from 'holocron-module-route';
 
 const childRoutes = () => [
-  <Route key={0} path="/" />,
+  <ModuleRoute key="nasa-root" path="/">
+    <ModuleRoute exact={true} path="(:locale)/" />
+    <ModuleRoute moduleName="nasa-container">
+      <ModuleRoute path="(:locale)/home" moduleName="nasa-home" />
+    </ModuleRoute>
+  </ModuleRoute>,
 ];
 
 export default childRoutes;
