@@ -1,14 +1,6 @@
 {
   "extends": "amex",
-  "parserOptions": {
-    "parser":"@babel/eslint-parser",
-    "babelOptions":{
-      "parserOpts":{
-        "plugins":["jsx"]
-      }
-    }
-  },
   "rules":{
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+    "import/no-extraneous-dependencies": ["error", "off"]
   }
 }
