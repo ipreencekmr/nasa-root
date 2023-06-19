@@ -28,8 +28,7 @@
       "dockerImage": "oneamex/one-app-dev:latest",
       "moduleMapUrl": "https://module-map.vercel.app/module-map.json",
       "modules": [
-        ".",
-        "../nasa-root"
+        "."
       ],
       "rootModuleName": "nasa-root",
       "parrotMiddleware": "./dev.middleware.js"
