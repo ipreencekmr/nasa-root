@@ -32,7 +32,9 @@ jobs:
       env:
         NODE_ENV: production
     - name: 'Deploy'
-      run: vercel --cwd build --prod --yes -t $VERCEL_TOKEN --name nasa-root
+      run: |
+        export set NODE_ENV=production
+        vercel --cwd build --prod --yes -t $VERCEL_TOKEN --name nasa-root
       env:
         VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         NODE_ENV: production
