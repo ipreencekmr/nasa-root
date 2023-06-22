@@ -7,6 +7,7 @@
        "optionalDependencies": false, 
        "peerDependencies": false, 
        "packageDir": "./"
-    }]
+    }],
+     "eslint-comments/disable-enable-pair": ["error", {"allowWholeFile": true}]
   }
 }
