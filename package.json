@@ -8,7 +8,8 @@
     "start:test": "one-app-runner-test",
     "prebuild": "npm run clean",
     "build": "bundle-module",
-    "build:watch": "npm run build -- --watch",
+    "build:watch": "bundle-module --watch --dev",
+    "build:live": "bundle-module --live --dev",
     "clean": "rimraf build",
     "prepare": "npm run build",
     "lint": "eslint --ignore-path .gitignore --ext js,jsx",
@@ -22,16 +23,24 @@
   },
   "one-amex": {
     "app": {
-      "compatibility": "^6.4.2"
+      "compatibility": "^5.0.0"
     },
     "runner": {
-      "dockerImage": "oneamex/one-app-dev:latest",
+      "dockerImage": "oneamex/one-app-dev:5",
       "moduleMapUrl": "https://module-map.vercel.app/module-map.json",
       "modules": [
         "."
       ],
       "rootModuleName": "nasa-root",
-      "parrotMiddleware": "./dev.middleware.js"
+      "parrotMiddleware": "./dev.middleware.js",
+      "envVars": {
+        "ONE_CONFIG_ENV": "development",
+        "ONE_CLIENT_ROOT_MODULE_NAME": "nasa-root",
+        "NODE_ENV": "development",
+        "HOLOCRON_MODULE_MAP_URL": "https://module-map.vercel.app/module-map.json",
+        "ONE_CLIENT_LOCALE_FILENAME": "integration",
+        "ONE_CLIENT_CDN_URL": "https://cdn.jsdelivr.net/gh/ipreencekmr/CDN@main/nasa/static/"
+      }
     },
     "bundler": {
       "webpackConfigPath": "webpack.config.js",
@@ -46,6 +55,7 @@
     "content-security-policy-builder": "^2.1.0",
     "fs-extra": "^11.1.1",
     "holocron": "^1.1.2",
+    "holocron-module-route": "^1.7.0",
     "immutable": "^4.0.0-rc.12",
     "node-fetch": "^2.6.11",
     "prop-types": "^15.7.2",
@@ -57,6 +67,7 @@
   "devDependencies": {
     "@americanexpress/one-app-bundler": "^6.10.0",
     "@americanexpress/one-app-runner": "^6.10.0",
+    "@babel/eslint-parser": "^7.22.5",
     "@babel/polyfill": "^7.12.1",
     "@commitlint/cli": "^17.6.5",
     "@commitlint/config-conventional": "^17.6.5",

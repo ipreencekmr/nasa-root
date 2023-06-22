@@ -1,51 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NasaRoot should render as expected module should render correct JSX 1`] = `
-<span
-  id="greeting-message"
->
-  <h1>
-    <MemoizedFormattedMessage
-      id="greeting"
-    />
-  </h1>
-</span>
-`;
+exports[`NasaRoot should render as expected module should render correct JSX 1`] = `null`;
 
-exports[`NasaRoot should render as expected module should render correct JSX 2`] = `
-<div
-  id="locale"
->
-  <label
-    htmlFor="locale-selector"
-  >
-    <p>
-      Choose a locale:
-    </p>
-    <select
-      id="locale-selector"
-      name="locale"
-      onChange={[MockFunction]}
-    >
-      <option
-        key="en-US"
-        value="en-US"
-      >
-        en-US
-      </option>
-      <option
-        key="en-CA"
-        value="en-CA"
-      >
-        en-CA
-      </option>
-      <option
-        key="es-MX"
-        value="es-MX"
-      >
-        es-MX
-      </option>
-    </select>
-  </label>
-</div>
-`;
+exports[`NasaRoot should render as expected module should render correct JSX 2`] = `null`;
