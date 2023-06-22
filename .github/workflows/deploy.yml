@@ -41,6 +41,6 @@ jobs:
     - name: 'Update Module Map'
       run: |
         node ./scripts/updateModuleMap.js
-        vercel module_map --prod --yes -t $VERCEL_TOKEN --name module-map
+        vercel statics --prod --yes -t $VERCEL_TOKEN --name module-map
       env:
         VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
