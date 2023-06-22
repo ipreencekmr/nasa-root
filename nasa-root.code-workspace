@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../nasa-container"
+		},
+		{
+			"path": "../nasa-header"
+		},
+		{
+			"path": "../nasa-footer"
+		},
+		{
+			"path": "../nasa-home"
+		}
+	],
+	"settings": {}
+}

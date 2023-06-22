@@ -1,6 +1,12 @@
 {
   "extends": "amex",
   "rules":{
-    "import/no-extraneous-dependencies": ["error", "off"]
+    "import/no-extraneous-dependencies": 
+    ["error", {
+       "devDependencies": true, 
+       "optionalDependencies": false, 
+       "peerDependencies": false, 
+       "packageDir": "./"
+    }]
   }
 }
