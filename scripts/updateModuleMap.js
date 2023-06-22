@@ -14,7 +14,7 @@ const updateModuleMap = async () => {
     const response = await fetch(moduleMapUrl); // download the current module map
 
     const moduleMapContent = await response.json();
-    const dir = 'module_map';
+    const dir = 'statics';
 
     moduleMapContent.modules[name] = {
       browser: {
@@ -35,8 +35,10 @@ const updateModuleMap = async () => {
     // write the updated module map to a temporary folder
     // so it can be re-uploaded by the deploy action
     await fs.writeFile(
-      './module_map/module-map.json', JSON.stringify(moduleMapContent, null, 2)
+      `./${dir}/module-map.json`, JSON.stringify(moduleMapContent, null, 2)
     );
+
+    fs.copySync(`./build/${version}`, `./${dir}/modules/${name}/${version}/`, { overwrite: true });
   } catch (error) {
     // eslint-disable-next-line no-console -- desc
     console.error(error);

@@ -19,7 +19,8 @@
     "test": "npm run test:lint && npm run test:unit",
     "deploy:module": "vercel --cwd build --prod --yes --name nasa-root",
     "generate:map": "node ./scripts/updateModuleMap",
-    "deploy": "npm run deploy:module && npm run generate:map && vercel module_map --prod --yes --name module-map"
+    "deploy": "npm run deploy:module && npm run generate:map && vercel module_map --prod --yes --name module-map",
+    "serve-module":"one-app serve-module ./"
   },
   "one-amex": {
     "app": {
@@ -27,7 +28,7 @@
     },
     "runner": {
       "dockerImage": "oneamex/one-app-dev:5",
-      "moduleMapUrl": "https://module-map.vercel.app/module-map.json",
+      "moduleMapUrl": "https://cdn.jsdelivr.net/gh/ipreencekmr/CDN@main/nasa/static/module-map.json",
       "modules": [
         "."
       ],
@@ -35,11 +36,10 @@
       "parrotMiddleware": "./dev.middleware.js",
       "envVars": {
         "ONE_CONFIG_ENV": "development",
-        "ONE_CLIENT_ROOT_MODULE_NAME": "nasa-root",
         "NODE_ENV": "development",
-        "HOLOCRON_MODULE_MAP_URL": "https://module-map.vercel.app/module-map.json",
+        "HOLOCRON_MODULE_MAP_URL": "https://cdn.jsdelivr.net/gh/ipreencekmr/CDN@main/nasa/static/module-map.json",
         "ONE_CLIENT_LOCALE_FILENAME": "integration",
-        "ONE_CLIENT_CDN_URL": "https://cdn.jsdelivr.net/gh/ipreencekmr/CDN@main/nasa/static/"
+        "ONE_CLIENT_CDN_URL": "https://cdn.jsdelivr.net/gh/ipreencekmr/CDN@main/nasa/"
       }
     },
     "bundler": {

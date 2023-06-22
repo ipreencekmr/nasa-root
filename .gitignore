@@ -3,11 +3,11 @@
 
 # node/npm
 node_modules
-module_map
+statics
 *.log
 
 # github
-.github
+.github/
 
 # build
 build
