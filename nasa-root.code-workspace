@@ -14,6 +14,9 @@
 		},
 		{
 			"path": "../nasa-home"
+		},
+		{
+			"path": "../nasa-auth"
 		}
 	],
 	"settings": {}

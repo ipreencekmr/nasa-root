@@ -27,7 +27,7 @@ NasaRoot.childRoutes = childRoutes;
 /* istanbul ignore next */
 if (!global.BROWSER) {
   // eslint-disable-next-line global-require -- desc
-  NasaRoot.appConfig = require('../appConfig').default;
+  NasaRoot.appConfig = require('../config/appConfig').default;
 }
 
 NasaRoot.propTypes = {

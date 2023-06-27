@@ -11,6 +11,7 @@
     "build:watch": "bundle-module --watch --dev",
     "build:live": "bundle-module --live --dev",
     "clean": "rimraf build",
+    "clean:install": "rm -rf node_modules package-lock.json && npm cache clean -f && npm install -f",
     "prepare": "npm run build",
     "lint": "eslint --ignore-path .gitignore --ext js,jsx",
     "lint:fix": "npm run lint -- --fix",
@@ -19,8 +20,7 @@
     "test": "npm run test:lint && npm run test:unit",
     "deploy:module": "vercel --cwd build --prod --yes --name nasa-root",
     "generate:map": "node ./scripts/updateModuleMap",
-    "deploy": "npm run deploy:module && npm run generate:map && vercel module_map --prod --yes --name module-map",
-    "serve-module":"one-app serve-module ./"
+    "deploy": "npm run deploy:module && npm run generate:map && vercel statics --prod --yes --name module-map"
   },
   "one-amex": {
     "app": {
@@ -28,18 +28,21 @@
     },
     "runner": {
       "dockerImage": "oneamex/one-app-dev:5",
-      "moduleMapUrl": "https://cdn.jsdelivr.net/gh/ipreencekmr/CDN@main/nasa/static/module-map.json",
+      "moduleMapUrl": "https://module-map.vercel.app/module-map.json",
       "modules": [
-        "."
+        ".",
+        "../nasa-header",
+        "../nasa-container",
+        "../nasa-footer",
+        "../nasa-home",
+        "../nasa-auth"
       ],
       "rootModuleName": "nasa-root",
       "parrotMiddleware": "./dev.middleware.js",
       "envVars": {
         "ONE_CONFIG_ENV": "development",
         "NODE_ENV": "development",
-        "HOLOCRON_MODULE_MAP_URL": "https://cdn.jsdelivr.net/gh/ipreencekmr/CDN@main/nasa/static/module-map.json",
-        "ONE_CLIENT_LOCALE_FILENAME": "integration",
-        "ONE_CLIENT_CDN_URL": "https://cdn.jsdelivr.net/gh/ipreencekmr/CDN@main/nasa/"
+        "ONE_CLIENT_CDN_URL": "https://module-map.vercel.app/"
       }
     },
     "bundler": {
@@ -52,6 +55,7 @@
   "dependencies": {
     "@americanexpress/one-app-ducks": "^4.3.1",
     "@americanexpress/one-app-router": "^1.1.0",
+    "@types/react": "^18.2.14",
     "content-security-policy-builder": "^2.1.0",
     "fs-extra": "^11.1.1",
     "holocron": "^1.1.2",
@@ -62,7 +66,8 @@
     "react": "^16.14.0",
     "react-intl": "^5.10.6",
     "react-redux": "^7.2.2",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "webpack-node-externals": "^3.0.0"
   },
   "devDependencies": {
     "@americanexpress/one-app-bundler": "^6.10.0",
