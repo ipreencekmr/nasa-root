@@ -14,6 +14,14 @@ const childRoutes = () => [
           path="(:locale)/auth/:authType"
           moduleName="nasa-auth"
         />
+        <ModuleRoute
+          path="(:locale)/detail/:id"
+          moduleName="nasa-detail"
+        />
+        <ModuleRoute
+          path="(:locale)/about"
+          moduleName="nasa-about"
+        />
       </ModuleRoute>
     </ModuleRoute>
   </ModuleRoute>,

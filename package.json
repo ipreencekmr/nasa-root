@@ -35,7 +35,9 @@
         "../nasa-container",
         "../nasa-footer",
         "../nasa-home",
-        "../nasa-auth"
+        "../nasa-auth",
+        "../nasa-about",
+        "../nasa-detail"
       ],
       "rootModuleName": "nasa-root",
       "parrotMiddleware": "./dev.middleware.js",
