@@ -4,7 +4,6 @@ import { loadLanguagePack, updateLocale } from '@americanexpress/one-app-ducks';
 import { IntlProvider } from 'react-intl';
 import { connect } from 'react-redux';
 import { fromJS } from 'immutable';
-// eslint-disable-next-line import/no-extraneous-dependencies -- desc
 import { Helmet } from 'react-helmet';
 import childRoutes from '../childRoutes';
 

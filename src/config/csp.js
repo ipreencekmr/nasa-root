@@ -13,6 +13,8 @@ export default contentSecurityPolicyBuilder({
     ],
     imgSrc: [
       "'self'",
+      '*.nasa.gov',
+      'data: https:',
     ],
     styleSrc: [
       "'self'",
@@ -20,6 +22,7 @@ export default contentSecurityPolicyBuilder({
     ],
     connectSrc: [
       "'self'",
+      '*.nasa.gov',
     ],
   },
 });
