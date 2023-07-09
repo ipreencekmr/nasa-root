@@ -2,13 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { loadLanguagePack, updateLocale } from '@americanexpress/one-app-ducks';
 import { IntlProvider } from 'react-intl';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { fromJS } from 'immutable';
 import { Helmet } from 'react-helmet';
 import childRoutes from '../childRoutes';
 
-export const NasaRoot = ({ languageData, localeName, children }) => {
+export const NasaRoot = ({
+  switchLanguage, languageData, params, localeName, children,
+}) => {
   // naive solution - up to user on how to load in data
+
+  const nasaDomain = useSelector((state) => state.getIn(['config', 'cspReportingUrl']));
+
+  console.log(`cspReportingUrl domain: ${nasaDomain}`);
+
+  React.useEffect(() => {
+    if (params && params.locale) {
+      const [language, country] = params.locale.split('-');
+      const newLocale = `${language.toLowerCase()}-${country.toUpperCase()}`;
+      switchLanguage(newLocale);
+    }
+  }, [params, switchLanguage]);
 
   if (languageData) {
     return (
@@ -50,11 +64,15 @@ NasaRoot.propTypes = {
     greeting: PropTypes.string.isRequired,
   }).isRequired,
   localeName: PropTypes.string.isRequired,
+  params: PropTypes.shape({
+    locale: PropTypes.string,
+  }).isRequired,
+  switchLanguage: PropTypes.func.isRequired,
 };
 
 export const mapDispatchToProps = (dispatch) => ({
-  switchLanguage: async ({ target }) => {
-    await dispatch(updateLocale(target.value));
+  switchLanguage: async (locale) => {
+    await dispatch(updateLocale(locale));
     await dispatch(loadLanguagePack('nasa-root', { fallbackLocale: 'en-US' }));
   },
 });

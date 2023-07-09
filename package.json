@@ -49,17 +49,23 @@
     "bundler": {
       "webpackConfigPath": "webpack.config.js",
       "providedExternals": [
-        "react-intl"
+        "react-intl",
+        "@emotion/react",
+        "@emotion/styled",
+        "dayjs"
       ]
     }
   },
   "dependencies": {
     "@americanexpress/one-app-ducks": "^4.3.1",
+    "@americanexpress/one-app-router": "^1.2.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.13.6",
+    "@mui/icons-material": "^5.13.7",
+    "@mui/material": "^5.13.7",
     "@types/react-helmet": "^6.1.6",
     "content-security-policy-builder": "^2.1.0",
+    "dayjs": "^1.11.9",
     "fs-extra": "^11.1.1",
     "holocron-module-route": "^1.7.0",
     "immutable": "^4.0.0-rc.12",
