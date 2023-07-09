@@ -1,7 +1,9 @@
 import csp from './csp';
-import stateConfig from './stateConfig';
+import provideStateConfig from './provideStateConfig';
+import pwa from './pwa';
 
 export default {
   csp,
-  stateConfig,
+  provideStateConfig,
+  pwa,
 };

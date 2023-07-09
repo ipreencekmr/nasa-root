@@ -14,6 +14,7 @@ export default contentSecurityPolicyBuilder({
     imgSrc: [
       "'self'",
       '*.nasa.gov',
+      '*.icons8.com',
       'data: https:',
     ],
     styleSrc: [

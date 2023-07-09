@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { loadLanguagePack, updateLocale } from '@americanexpress/one-app-ducks';
 import { IntlProvider } from 'react-intl';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { fromJS } from 'immutable';
 import { Helmet } from 'react-helmet';
 import childRoutes from '../childRoutes';
@@ -10,12 +10,6 @@ import childRoutes from '../childRoutes';
 export const NasaRoot = ({
   switchLanguage, languageData, params, localeName, children,
 }) => {
-  // naive solution - up to user on how to load in data
-
-  const nasaDomain = useSelector((state) => state.getIn(['config', 'cspReportingUrl']));
-
-  console.log(`cspReportingUrl domain: ${nasaDomain}`);
-
   React.useEffect(() => {
     if (params && params.locale) {
       const [language, country] = params.locale.split('-');
@@ -28,13 +22,19 @@ export const NasaRoot = ({
     return (
       <IntlProvider locale={localeName} messages={languageData}>
         <Helmet>
-          <htmlAttributes lang={localeName} />
 
           <title>{languageData.title}</title>
 
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1"
+          />
+
+          <link
+            rel="icon"
+            type="image/png"
+            href="https://img.icons8.com/emoji/32/satellite-emji.png"
+            sizes="16x16"
           />
 
         </Helmet>
