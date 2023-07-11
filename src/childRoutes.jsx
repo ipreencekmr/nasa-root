@@ -1,7 +1,8 @@
 import React from 'react';
 import ModuleRoute from 'holocron-module-route';
+import { requireAuth } from './hooks/requireAuth';
 
-const childRoutes = () => [
+const childRoutes = (store) => [
   <ModuleRoute key="nasa-root" path="/">
     <ModuleRoute exact={true} path="(:locale)/" />
     <ModuleRoute moduleName="nasa-container">
@@ -16,6 +17,7 @@ const childRoutes = () => [
         />
         <ModuleRoute
           path="(:locale)/detail/:id"
+          onEnter={requireAuth(store)}
           moduleName="nasa-detail"
         />
         <ModuleRoute

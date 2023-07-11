@@ -1,4 +1,5 @@
 const NASA_DOMAIN = 'nasaDomain';
+const APP_DOMAIN = 'appDomain';
 const APOD_URI = 'apodUri';
 const NEO_URI = 'neoUri';
 const MRO_URI = 'mroUri';
@@ -16,6 +17,18 @@ const stateConfig = {
       development: 'https://api.nasa.gov',
       qa: 'https://api.nasa.gov',
       production: 'https://api.nasa.gov',
+    },
+  },
+  [APP_DOMAIN]: {
+    client: {
+      development: 'http://localhost:3000',
+      qa: '',
+      production: '',
+    },
+    server: {
+      development: 'http://localhost:3000',
+      qa: '',
+      production: '',
     },
   },
   [APOD_URI]: {

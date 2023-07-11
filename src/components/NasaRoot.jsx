@@ -3,9 +3,13 @@ import PropTypes from 'prop-types';
 import { loadLanguagePack, updateLocale } from '@americanexpress/one-app-ducks';
 import { IntlProvider } from 'react-intl';
 import { connect } from 'react-redux';
-import { fromJS } from 'immutable';
 import { Helmet } from 'react-helmet';
 import childRoutes from '../childRoutes';
+import { MODULE_NAME } from '../constants/module';
+import {
+  getLanguageDataSelector, getLocaleSelector,
+} from '../selectors/marketSelector';
+import reducer from '../ducks/authDuck';
 
 export const NasaRoot = ({
   switchLanguage, languageData, params, localeName, children,
@@ -23,7 +27,7 @@ export const NasaRoot = ({
       <IntlProvider locale={localeName} messages={languageData}>
         <Helmet>
 
-          <title>{languageData.title}</title>
+          <title>{languageData?.title}</title>
 
           <meta
             name="viewport"
@@ -61,7 +65,6 @@ NasaRoot.propTypes = {
   children: PropTypes.node.isRequired,
   languageData: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    greeting: PropTypes.string.isRequired,
   }).isRequired,
   localeName: PropTypes.string.isRequired,
   params: PropTypes.shape({
@@ -73,29 +76,25 @@ NasaRoot.propTypes = {
 export const mapDispatchToProps = (dispatch) => ({
   switchLanguage: async (locale) => {
     await dispatch(updateLocale(locale));
-    await dispatch(loadLanguagePack('nasa-root', { fallbackLocale: 'en-US' }));
+    await dispatch(loadLanguagePack(MODULE_NAME, { fallbackLocale: 'en-US' }));
   },
 });
 
 export const mapStateToProps = (state) => {
-  const localeName = state.getIn(['intl', 'activeLocale']);
-  const languagePack = state.getIn(
-    ['intl', 'languagePacks', localeName, 'nasa-root'],
-    fromJS({})
-  ).toJS();
-
+  const localeName = getLocaleSelector(state);
   return {
-    languageData: languagePack && languagePack.data ? languagePack.data : {},
+    languageData: getLanguageDataSelector(state, localeName, MODULE_NAME),
     localeName,
   };
 };
 
 export const loadModuleData = async ({ store: { dispatch } }) => {
-  await dispatch(loadLanguagePack('nasa-root', { fallbackLocale: 'en-US' }));
+  await dispatch(loadLanguagePack(MODULE_NAME, { fallbackLocale: 'en-US' }));
 };
 
 NasaRoot.holocron = {
-  name: 'nasa-root',
+  name: MODULE_NAME,
+  reducer,
   loadModuleData,
 };
 

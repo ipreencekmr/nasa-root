@@ -24,6 +24,7 @@ export default contentSecurityPolicyBuilder({
     connectSrc: [
       "'self'",
       '*.nasa.gov',
+      'fakestoreapi.com',
     ],
   },
 });
