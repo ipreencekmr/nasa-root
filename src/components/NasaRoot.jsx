@@ -9,7 +9,6 @@ import { MODULE_NAME } from '../constants/module';
 import {
   getLanguageDataSelector, getLocaleSelector,
 } from '../selectors/marketSelector';
-import reducer from '../ducks/authDuck';
 
 export const NasaRoot = ({
   switchLanguage, languageData, params, localeName, children,
@@ -94,7 +93,6 @@ export const loadModuleData = async ({ store: { dispatch } }) => {
 
 NasaRoot.holocron = {
   name: MODULE_NAME,
-  reducer,
   loadModuleData,
 };
 

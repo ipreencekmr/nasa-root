@@ -30,21 +30,15 @@
       "dockerImage": "oneamex/one-app-dev:5",
       "moduleMapUrl": "https://module-map.vercel.app/module-map.json",
       "modules": [
-        ".",
-        "../nasa-header",
-        "../nasa-container",
-        "../nasa-footer",
-        "../nasa-home",
-        "../nasa-auth",
-        "../nasa-about",
-        "../nasa-detail"
+        "."
       ],
       "rootModuleName": "nasa-root",
       "parrotMiddleware": "./dev.middleware.js",
-      "devEndpoints": "./dev.endpoint.js",
+      "devEndpoints":"./dev.endpoint.js",
       "envVars": {
         "ONE_CONFIG_ENV": "development",
-        "NODE_ENV": "development"
+        "NODE_ENV": "development",
+        "HOLOCRON_MODULE_MAP_URL": "https://module-map.vercel.app/module-map.json"
       }
     },
     "bundler": {
@@ -70,6 +64,7 @@
     "fs-extra": "^11.1.1",
     "holocron-module-route": "^1.7.0",
     "immutable": "^4.0.0-rc.12",
+    "js-cookie": "^3.0.5",
     "node-fetch": "^2.6.11",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
@@ -78,7 +73,8 @@
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "redux-immutable": "^4.0.0",
-    "reselect": "^4.1.8"
+    "reselect": "^4.1.8",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@americanexpress/one-app-bundler": "^6.10.0",

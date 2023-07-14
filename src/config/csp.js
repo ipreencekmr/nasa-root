@@ -10,6 +10,7 @@ export default contentSecurityPolicyBuilder({
     ],
     scriptSrc: [
       "'self'",
+      '*.vercel.app',
     ],
     imgSrc: [
       "'self'",
