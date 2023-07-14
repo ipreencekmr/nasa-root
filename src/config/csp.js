@@ -11,6 +11,8 @@ export default contentSecurityPolicyBuilder({
     scriptSrc: [
       "'self'",
       '*.vercel.app',
+      'nasa-mfa-reports.s3.amazonaws.com',
+      'nasa-mfa.s3.amazonaws.com',
     ],
     imgSrc: [
       "'self'",

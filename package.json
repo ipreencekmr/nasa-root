@@ -34,11 +34,11 @@
       ],
       "rootModuleName": "nasa-root",
       "parrotMiddleware": "./dev.middleware.js",
-      "devEndpoints":"./dev.endpoint.js",
       "envVars": {
+        "NODE_ENV":"development",
         "ONE_CONFIG_ENV": "development",
-        "NODE_ENV": "development",
-        "HOLOCRON_MODULE_MAP_URL": "https://module-map.vercel.app/module-map.json"
+        "ONE_SERVICE_WORKER":true,
+        "HOLOCRON_MODULE_MAP_URL":"https://module-map.vercel.app/module-map.json"
       }
     },
     "bundler": {
