@@ -37,8 +37,8 @@ const stateConfig = {
   [APP_DOMAIN]: {
     client: {
       development: 'http://localhost:3000',
-      qa: '',
-      production: '',
+      qa: 'http://nasa-mfa.us-east-1.elasticbeanstalk.com',
+      production: 'http://nasa-mfa.us-east-1.elasticbeanstalk.com',
     },
     server: {
       development: 'http://localhost:3000',

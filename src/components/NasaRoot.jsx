@@ -75,14 +75,14 @@ NasaRoot.propTypes = {
 export const mapDispatchToProps = (dispatch) => ({
   switchLanguage: async (locale) => {
     await dispatch(updateLocale(locale));
-    await dispatch(loadLanguagePack(MODULE_NAME, { fallbackLocale: 'en-US' }));
+    await dispatch(loadLanguagePack(MODULE_NAME, { fallbackLocale: 'en-GB' }));
   },
 });
 
-export const mapStateToProps = (state) => {
+export const mapStateToProps = (state, ownProps) => {
   const localeName = getLocaleSelector(state);
   return {
-    languageData: getLanguageDataSelector(state, localeName, MODULE_NAME),
+    languageData: getLanguageDataSelector(state, ownProps?.params?.locale, MODULE_NAME),
     localeName,
   };
 };
