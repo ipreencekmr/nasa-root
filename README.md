@@ -15,6 +15,10 @@ A Demo application build on top of One App framework provided by american expres
 
 <img width="711" alt="LighthouseReport" src="https://github.com/ipreencekmr/nasa-root/assets/3636918/af1a6dd9-9de1-4cb5-951c-983a64cad30d">
 
+## CICD Workflow
+
+<img width="1466" alt="CICD-workflow" src="https://github.com/ipreencekmr/nasa-root/assets/3636918/d6d48d4e-b602-47fd-a318-a53efc7c636d">
+
 ## Child Modules
 
 - [nasa-container](https://github.com/ipreencekmr/nasa-container)
