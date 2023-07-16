@@ -5,7 +5,6 @@ A Demo application build on top of One App framework provided by american expres
 
 ## Application Architecture
 
-
 ![NASA-MFA](https://github.com/ipreencekmr/nasa-root/assets/3636918/bae3fce4-2968-473a-bb0b-37d1d5bd214a)
 
 
@@ -28,7 +27,7 @@ A Demo application build on top of One App framework provided by american expres
 
 ## Prerequisite
 
-- Node
+- Node 16.x.x
 - Docker
 
 ## Usage 
@@ -37,9 +36,29 @@ A Demo application build on top of One App framework provided by american expres
 git clone https://github.com/ipreencekmr/nasa-root.git
 cd nasa-root
 npm install
+
+//set environment variables
+export NODE_ENV=development
+export ONE_CLIENT_ROOT_MODULE_NAME=nasa-root
+export HOLOCRON_MODULE_MAP_URL=https://module-map.vercel.app/module-map.json
+export ONE_CONFIG_ENV=development
+
 npm run build
 npm run start
+
 ```
+
+Your Local Application starts at 
+
+[http://localhost:3000/en-GB/home](http://localhost:3000/en-GB/home)
+
+## Deployment
+
+- Modules are deployed on [Vercel](https://vercel.com/)
+- CICD integration done with the help of Github Actions
+- Domain name purchased from [GoDaddy](https://www.godaddy.com/en-in)
+- Application deployed on AWS EC2 Instance
+- Ready to Use Application [http://nasa.learn-coding.xyz:3000/en-GB/home](http://nasa.learn-coding.xyz:3000/en-GB/home)
 
 ## Available Scripts
 
@@ -82,5 +101,13 @@ npm run start
 - [Node](https://nodejs.org/en/docs)
 
 - [React](https://react.dev/learn)
+
+- [Redux](https://redux.js.org/)
+
+- [Vercel](https://vercel.com/docs)
+
+- [AWS-EC2](https://docs.aws.amazon.com/ec2/index.html)
+
+- [AWS-Route53](https://docs.aws.amazon.com/route53/)
 
 - [Parrot Middleware](https://github.com/americanexpress/parrot#readme)
