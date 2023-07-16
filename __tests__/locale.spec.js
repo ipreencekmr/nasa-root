@@ -7,11 +7,11 @@ const localeDir = path.join(__dirname, '../locale');
 
 const schema = {
   properties: {
-    greeting: {
+    title: {
       type: 'string',
     },
   },
-  required: ['greeting'],
+  required: ['title'],
   additionalProperties: false,
 };
 

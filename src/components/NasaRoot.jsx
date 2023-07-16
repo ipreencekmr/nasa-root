@@ -21,12 +21,12 @@ export const NasaRoot = ({
     }
   }, [params, switchLanguage]);
 
-  if (languageData) {
+  if (Object.keys(languageData).length > 0) {
     return (
       <IntlProvider locale={localeName} messages={languageData}>
         <Helmet>
 
-          <title>{languageData?.title}</title>
+          <title data-testid="titleId">{languageData?.title}</title>
 
           <meta
             name="viewport"
@@ -63,7 +63,7 @@ if (!global.BROWSER) {
 NasaRoot.propTypes = {
   children: PropTypes.node.isRequired,
   languageData: PropTypes.shape({
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string,
   }).isRequired,
   localeName: PropTypes.string.isRequired,
   params: PropTypes.shape({
@@ -75,7 +75,7 @@ NasaRoot.propTypes = {
 export const mapDispatchToProps = (dispatch) => ({
   switchLanguage: async (locale) => {
     await dispatch(updateLocale(locale));
-    await dispatch(loadLanguagePack(MODULE_NAME, { fallbackLocale: 'en-GB' }));
+    await dispatch(loadLanguagePack(MODULE_NAME, { fallbackLocale: 'en-US' }));
   },
 });
 

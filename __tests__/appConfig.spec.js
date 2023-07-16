@@ -1,21 +1,17 @@
-import AppConfig from '../src/appConfig';
+import AppConfig from '../src/config/appConfig';
 
 describe('appConfig', () => {
-  it('should contain csp', () => {
-    expect(AppConfig.csp).toBeDefined();
-    expect(typeof AppConfig.csp).toBe('string');
+  it('shoule be valid json object', () => {
+    expect(AppConfig).toBeInstanceOf(Object);
+    expect(Object.keys(AppConfig)).toHaveLength(3);
   });
 
-  describe('csp', () => {
-    beforeEach(() => {
-      jest.resetModules();
-      process.env.ONE_CLIENT_REPORTING_URL = 'example.com';
-    });
-
-    it('should be a valid csp string', () => {
-      // eslint-disable-next-line global-require -- desc
-      const cspString = require('../src/csp').default;
-      expect(cspString).toMatchSnapshot();
-    });
+  it('should contain csp', () => {
+    expect(AppConfig.csp).toBeDefined();
+    expect(AppConfig.provideStateConfig).toBeDefined();
+    expect(AppConfig.pwa).toBeDefined();
+    expect(typeof AppConfig.csp).toBe('string');
+    expect(typeof AppConfig.provideStateConfig).toBe('object');
+    expect(typeof AppConfig.pwa).toBe('object');
   });
 });
