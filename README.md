@@ -48,7 +48,7 @@ npm run start
 
 ```
 
-Application starts at 
+Your Local Application starts at 
 
 [http://localhost:3000/en-GB/home](http://localhost:3000/en-GB/home)
 
@@ -58,6 +58,7 @@ Application starts at
 - CICD integration done with the help of Github Actions
 - Domain name purchased from [GoDaddy](https://www.godaddy.com/en-in)
 - Application deployed on AWS EC2 Instance
+- Ready to Use Application [http://nasa.learn-coding.xyz:3000/en-GB/home](http://nasa.learn-coding.xyz:3000/en-GB/home)
 
 ## Available Scripts
 
