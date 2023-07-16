@@ -7,12 +7,22 @@ export default contentSecurityPolicyBuilder({
     reportUri: process.env.ONE_CLIENT_CSP_REPORTING_URL,
     defaultSrc: [
       "'self'",
+      'nasa-mfa-reports.s3.amazonaws.com',
+      'nasa-mfa.s3.amazonaws.com',
     ],
     scriptSrc: [
       "'self'",
+      '*.vercel.app',
+      'nasa-mfa-reports.s3.amazonaws.com',
+      'nasa-mfa.s3.amazonaws.com',
+      '*.learn-coding.xyz',
+      '52.90.110.6',
     ],
     imgSrc: [
       "'self'",
+      '*.nasa.gov',
+      '*.icons8.com',
+      'data: https:',
     ],
     styleSrc: [
       "'self'",
@@ -20,6 +30,10 @@ export default contentSecurityPolicyBuilder({
     ],
     connectSrc: [
       "'self'",
+      '*.nasa.gov',
+      'fakestoreapi.com',
+      '*.vercel.app',
+      '*.learn-coding.xyz',
     ],
   },
 });

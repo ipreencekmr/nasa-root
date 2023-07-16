@@ -14,6 +14,15 @@
 		},
 		{
 			"path": "../nasa-home"
+		},
+		{
+			"path": "../nasa-auth"
+		},
+		{
+			"path": "../nasa-about"
+		},
+		{
+			"path": "../nasa-detail"
 		}
 	],
 	"settings": {}
