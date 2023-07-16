@@ -24,7 +24,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node-
     - name: Install Dependencies
-      run: npm install
+      run: npm install -f
       env:
         NODE_ENV: development
     - name: Build Module
