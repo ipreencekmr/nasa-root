@@ -1,7 +1,9 @@
+const DELAY = 3000;
 const apodResponse = require('./apod.json');
 const neoResponse = require('./neo.json');
 const mroResponse = require('./mro.json');
 const donkiResponse = require('./donki.json');
+const loginResponse = require('./login.json');
 
 module.exports = {
   success: [
@@ -35,6 +37,26 @@ module.exports = {
         contentType: 'application/json',
         status: 200,
         body: donkiResponse,
+      },
+    },
+    {
+      request: { path: '/proxy_api/users', method: 'POST' },
+      response: {
+        contentType: 'application/json',
+        status: 200,
+        delay: DELAY,
+        body: {
+          id: 1,
+        },
+      },
+    },
+    {
+      request: { path: '/proxy_api/auth/login', method: 'POST' },
+      response: {
+        contentType: 'application/json',
+        status: 200,
+        delay: DELAY,
+        body: loginResponse,
       },
     },
   ],

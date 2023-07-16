@@ -1,5 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NasaRoot should render as expected module should render correct JSX 1`] = `null`;
-
-exports[`NasaRoot should render as expected module should render correct JSX 2`] = `null`;
+exports[`NasaRoot should render as expected module should render correct JSX 1`] = `
+<IntlProvider
+  defaultFormats={Object {}}
+  defaultLocale="en"
+  fallbackOnEmptyString={true}
+  formats={Object {}}
+  locale="en-US"
+  messages={
+    Object {
+      "locale": "en-US",
+      "title": "Mock Title",
+    }
+  }
+  onError={[Function]}
+  onWarn={[Function]}
+  textComponent={Symbol(react.fragment)}
+>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title
+      data-testid="titleId"
+    >
+      Mock Title
+    </title>
+    <meta
+      content="width=device-width, initial-scale=1"
+      name="viewport"
+    />
+    <link
+      href="https://img.icons8.com/emoji/32/satellite-emji.png"
+      rel="icon"
+      sizes="16x16"
+      type="image/png"
+    />
+  </HelmetWrapper>
+  Mock Children
+</IntlProvider>
+`;

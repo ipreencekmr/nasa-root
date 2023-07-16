@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { fromJS } from 'immutable';
-import { Route } from '@americanexpress/one-app-router';
+import ModuleRoute from 'holocron-module-route';
 import childRoutes from '../../src/childRoutes';
 import {
   NasaRoot, mapDispatchToProps, mapStateToProps, loadModuleData,
@@ -13,49 +13,48 @@ jest.mock('@americanexpress/one-app-ducks', () => ({
   loadLanguagePack: (moduleName, { fallbackLocale } = {}) => `I am loading the language pack for ${moduleName} and my fallback locale is ${fallbackLocale}`,
 }));
 
+jest.mock('../../src/selectors/marketSelector', () => ({
+  getLanguageDataSelector: jest.fn(() => ({
+    locale: 'en-US',
+    title: 'Mock Title',
+  })),
+  getLocaleSelector: jest.fn(() => 'en-US'),
+}));
+
 describe('NasaRoot should render as expected', () => {
+  let props;
+
+  beforeEach(() => {
+    props = {
+      switchLanguage: jest.fn(),
+      languageData: {
+        locale: 'en-US',
+        title: 'Mock Title',
+      },
+      localeName: 'en-US',
+      params: {
+        locale: 'en-US',
+      },
+      children: 'Mock Children',
+    };
+    const useEffectSpy = jest.spyOn(React, 'useEffect');
+    useEffectSpy.mockImplementation((f) => f());
+  });
+
   it('module should render correct JSX', () => {
-    const props = {
-      switchLanguage: jest.fn(),
-      languageData: {
-        locale: 'en-US',
-        greeting: 'hi!',
-      },
-      localeName: 'en-US',
-    };
     const renderedModule = shallow(<NasaRoot {...props} />);
-    expect(renderedModule.find('#greeting-message')).toMatchSnapshot();
-    expect(renderedModule.find('#locale')).toMatchSnapshot();
+    expect(renderedModule).toMatchSnapshot();
   });
+
   it('does not render when language data does not exist', () => {
-    const props = {
-      switchLanguage: jest.fn(),
-      languageData: {
-        greeting: null,
-      },
-      localeName: 'en-US',
-    };
-    const renderedModule = shallow(<NasaRoot {...props} />);
+    const renderedModule = shallow(<NasaRoot {...{ ...props, languageData: {}, params: {} }} />);
     expect(toJson(renderedModule)).toBe('');
-  });
-  it('switches languages when a new locale is selected', () => {
-    const props = {
-      switchLanguage: jest.fn(),
-      languageData: {
-        locale: 'en-US',
-        greeting: 'hi!',
-      },
-      localeName: 'en-US',
-    };
-    const renderedModule = shallow(<NasaRoot {...props} />);
-    renderedModule.find('#locale-selector').simulate('change', 'en-CA');
-    expect(props.switchLanguage).toHaveBeenCalledWith('en-CA');
   });
 
   describe('childRoutes', () => {
     it('should return an array of Routes', () => {
       expect(childRoutes()).toEqual(expect.any(Array));
-      childRoutes().forEach((route) => expect(route.type).toEqual(Route));
+      childRoutes().forEach((route) => expect(route.type).toEqual(ModuleRoute));
     });
   });
 
@@ -101,7 +100,7 @@ describe('NasaRoot should render as expected', () => {
             'en-US': {
               'nasa-root': {
                 data: {
-                  greeting: 'hello',
+                  title: 'Mock Title',
                 },
               },
             },
@@ -111,7 +110,7 @@ describe('NasaRoot should render as expected', () => {
       expect(mapStateToProps(mockState)).toMatchObject({
         localeName: 'en-US',
         languageData: {
-          greeting: 'hello',
+          title: 'Mock Title',
         },
       });
     });
@@ -121,7 +120,7 @@ describe('NasaRoot should render as expected', () => {
     it('should update the browser locale and then reload the language pack', async () => {
       const mockDispatch = jest.fn();
       const { switchLanguage } = mapDispatchToProps(mockDispatch);
-      await switchLanguage({ target: { value: 'en-US' } });
+      await switchLanguage('en-US');
       expect(mockDispatch).toHaveBeenNthCalledWith(1, 'Switching locale to en-US');
       expect(mockDispatch).toHaveBeenNthCalledWith(2, 'I am loading the language pack for nasa-root and my fallback locale is en-US');
     });
@@ -132,9 +131,8 @@ describe('NasaRoot should render as expected', () => {
       dispatch: jest.fn((x) => x),
     };
     it('should load language pack for nasa-root module', async () => {
-      const langPackAsyncState = await loadModuleData({ store: fakeStore });
-      expect(langPackAsyncState).toBe('I am loading the language pack for nasa-root and my fallback locale is en-US');
-      expect(fakeStore.dispatch).toHaveBeenCalledWith(langPackAsyncState);
+      await loadModuleData({ store: fakeStore });
+      expect(fakeStore.dispatch).toHaveBeenCalledWith('I am loading the language pack for nasa-root and my fallback locale is en-US');
     });
   });
 });
