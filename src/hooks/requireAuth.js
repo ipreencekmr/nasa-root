@@ -9,9 +9,7 @@ export const requireAuth = (store) => async (nextState, replace, cb) => {
   const state = store.getState();
   const appDomain = getAppDomain(state);
   const { locale } = nextState.params;
-
   const signInUrl = `${appDomain}/${locale}/auth/signin`;
-
   if (!accessToken) {
     store.dispatch(externalRedirect(signInUrl));
   }

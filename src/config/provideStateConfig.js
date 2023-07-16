@@ -1,6 +1,5 @@
 const NASA_DOMAIN = 'nasaDomain';
 const FAKE_DOMAIN = 'fakeDomain';
-const APP_DOMAIN = 'appDomain';
 const APOD_URI = 'apodUri';
 const NEO_URI = 'neoUri';
 const MRO_URI = 'mroUri';
@@ -32,18 +31,6 @@ const stateConfig = {
       development: 'https://fakestoreapi.com',
       qa: 'https://fakestoreapi.com',
       production: 'https://fakestoreapi.com',
-    },
-  },
-  [APP_DOMAIN]: {
-    client: {
-      development: 'http://localhost:3000',
-      qa: 'http://nasa-mfa.us-east-1.elasticbeanstalk.com',
-      production: 'http://nasa-mfa.us-east-1.elasticbeanstalk.com',
-    },
-    server: {
-      development: 'http://localhost:3000',
-      qa: '',
-      production: '',
     },
   },
   [APOD_URI]: {

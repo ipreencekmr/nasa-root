@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-export const appDomainSelector = (state) => state.getIn(['config', 'appDomain']);
+export const appDomainSelector = (state) => state.getIn(['browser', 'location', 'origin']);
 
 export const getAppDomain = createSelector(
   appDomainSelector,

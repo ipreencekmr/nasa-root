@@ -33,7 +33,11 @@
         "."
       ],
       "rootModuleName": "nasa-root",
-      "parrotMiddleware": "./dev.middleware.js"
+      "parrotMiddleware": "./dev.middleware.js",
+      "devEndpoints":"./dev.endpoint.js",
+      "envVars":{
+        "ONE_CONFIG_ENV":"development"
+      }
     },
     "bundler": {
       "webpackConfigPath": "webpack.config.js",
