@@ -37,6 +37,13 @@ A Demo application build on top of One App framework provided by american expres
 git clone https://github.com/ipreencekmr/nasa-root.git
 cd nasa-root
 npm install
+
+//set environment variables
+export NODE_ENV=development
+export ONE_CLIENT_ROOT_MODULE_NAME=nasa-root
+export HOLOCRON_MODULE_MAP_URL=https://module-map.vercel.app/module-map.json
+export ONE_CONFIG_ENV=development
+
 npm run build
 npm run start
 ```
